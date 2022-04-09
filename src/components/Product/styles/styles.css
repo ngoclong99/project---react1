@@ -1,0 +1,16 @@
+.tab-content > .tab-pane {
+  display: block !important;
+}
+
+.carousel-inner > .item {
+  display: flex !important;
+  width: 100%;
+}
+.carousel-inner.small > .item {
+  cursor: pointer;
+  width: calc(calc(100% - 45px) / 3);
+}
+
+.cuso {
+  cursor: pointer;
+}

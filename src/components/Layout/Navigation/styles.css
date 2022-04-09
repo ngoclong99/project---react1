@@ -1,0 +1,13 @@
+/* Carousel */
+.wrap-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.carousel-inner.carousel-home {
+  display: flex;
+  overflow: unset;
+}
+.carousel-inner.carousel-home > .item {
+  min-width: 100%;
+}
