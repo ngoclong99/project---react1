@@ -139,9 +139,9 @@ function Carousel(props) {
                 </div>
               </div>
               <span className="left control-carousel hidden-xs" onClick={handlePreImg}>
-                <i className="fa fa-angle-left"></i>
+                <i className="fa fa-angle-left cuso"></i>
               </span>
-              <span className="right control-carousel hidden-xs" onClick={handleNextImg}>
+              <span className="right control-carousel hidden-xs cuso" onClick={handleNextImg}>
                 <i className="fa fa-angle-right"></i>
               </span>
             </div>

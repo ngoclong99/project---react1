@@ -26,6 +26,7 @@ const cartReducer = (state = stateCart, action) => {
           state.total++
         }
         localStorage.setItem(StorageKeys.CART, JSON.stringify(state.cart))
+        alert('Add product success')
       }
       break
     case 'DELETE_PRODUCT':
