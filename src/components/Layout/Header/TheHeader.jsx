@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { checkToken } from '../../../constant/user'
 import { useSelector } from 'react-redux'
 import cartReducer from './../../../redux/cartReducer'
@@ -80,12 +80,12 @@ function TheHeader(props) {
                 <div className="contactinfo">
                   <ul className="nav nav-pills">
                     <li>
-                      <a href="#">
+                      <a className="cuso">
                         <i className="fa fa-phone"></i> +2 95 01 88 821
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a className="cuso">
                         <i className="fa fa-envelope"></i> info@domain.com
                       </a>
                     </li>
@@ -96,27 +96,27 @@ function TheHeader(props) {
                 <div className="social-icons pull-right">
                   <ul className="nav navbar-nav">
                     <li>
-                      <a href="#">
+                      <a className="cuso">
                         <i className="fa fa-facebook"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a className="cuso">
                         <i className="fa fa-twitter"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a className="cuso">
                         <i className="fa fa-linkedin"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a className="cuso">
                         <i className="fa fa-dribbble"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a className="cuso">
                         <i className="fa fa-google-plus"></i>
                       </a>
                     </li>
@@ -132,45 +132,37 @@ function TheHeader(props) {
             <div className="row">
               <div className="col-md-4 clearfix">
                 <div className="logo pull-left">
-                  <a href="index.html">
-                    <img src={require('../../../asset/images/home/logo.png')} alt="" />
+                  <a className="cuso">
+                    <img src={require('../../../asset/images/home/logo.png')} />
                   </a>
                 </div>
                 <div className="btn-group pull-right clearfix">
                   <div className="btn-group">
-                    <button
-                      type="button"
-                      className="btn btn-default dropdown-toggle usa"
-                      data-toggle="dropdown"
-                    >
+                    <button type="button" className="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                       USA
                       <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu">
                       <li>
-                        <a href="">Canada</a>
+                        <a className="cuso">Canada</a>
                       </li>
                       <li>
-                        <a href="">UK</a>
+                        <a className="cuso">UK</a>
                       </li>
                     </ul>
                   </div>
 
                   <div className="btn-group">
-                    <button
-                      type="button"
-                      className="btn btn-default dropdown-toggle usa"
-                      data-toggle="dropdown"
-                    >
+                    <button type="button" className="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                       DOLLAR
                       <span className="caret"></span>
                     </button>
                     <ul className="dropdown-menu">
                       <li>
-                        <a href="">Canadian Dollar</a>
+                        <a className="cuso">Canadian Dollar</a>
                       </li>
                       <li>
-                        <a href="">Pound</a>
+                        <a className="cuso">Pound</a>
                       </li>
                     </ul>
                   </div>
@@ -189,19 +181,19 @@ function TheHeader(props) {
                       ''
                     )}
                     <li>
-                      <a href="">
+                      <a className="cuso">
                         <i className="fa fa-star"></i> Wishlist
                       </a>
                     </li>
                     <li>
-                      <a href="checkout.html">
+                      <a className="cuso">
                         <i className="fa fa-crosshairs"></i> Checkout
                       </a>
                     </li>
                     <li>
-                      <a href="cart.html">
+                      <Link to="/my-cart">
                         <i className="fa fa-shopping-cart"></i> Cart <sup>{total === 0 ? '' : total}</sup>
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       {checkToken() === false ? (
@@ -226,12 +218,7 @@ function TheHeader(props) {
             <div className="row">
               <div className="col-sm-9">
                 <div className="navbar-header">
-                  <button
-                    type="button"
-                    className="navbar-toggle"
-                    data-toggle="collapse"
-                    data-target=".navbar-collapse"
-                  >
+                  <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span className="sr-only">Toggle navigation</span>
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
@@ -249,10 +236,7 @@ function TheHeader(props) {
                           <ul role="menu" className="sub-menu">
                             {link?.menu.map((link, index) => (
                               <li key={index}>
-                                <NavLink
-                                  to={link.childPath}
-                                  className={({ isActive }) => (isActive ? 'active' : '')}
-                                >
+                                <NavLink to={link.childPath} className={({ isActive }) => (isActive ? 'active' : '')}>
                                   {link.childName}
                                 </NavLink>
                               </li>

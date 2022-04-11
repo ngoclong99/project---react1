@@ -1,12 +1,11 @@
-import TheHeader from './components/Layout/Header/TheHeader'
+import React, { Fragment, useEffect, useMemo } from 'react'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { useLocation } from 'react-router-dom'
 import TheFooter from './components/Layout/Footer/TheFooter'
-import React, { Fragment, useEffect, useMemo, useState } from 'react'
-import { Outlet, useLocation, useParams } from 'react-router-dom'
+import TheHeader from './components/Layout/Header/TheHeader'
 import Navigation from './components/Layout/Navigation'
 import MenuLeft from './components/Layout/Sidebar/index'
 import useCategoryBrand from './hook/useCategoryBrand'
-import { useSelector } from 'react-redux'
-import AlertMessage from './components/Alert/AlertMessage'
 
 function App(props) {
   const location = useLocation()

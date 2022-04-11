@@ -6,16 +6,27 @@ import { BaseImageProduct } from '../../../util/setting/config'
 import { Link } from 'react-router-dom'
 import Pagination from '../components/Pagination'
 import Product from '../components/Product'
+import Skeleton from 'react-loading-skeleton'
 
 ProductList.propTypes = {}
 
 function ProductList(props) {
   const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const renderListProduct = () => {
     return products.map((p) => (
       <div className="col-sm-4" key={p.id}>
         <Product p={p} />
+      </div>
+    ))
+  }
+
+  const renderListSkeleton = () => {
+    let array = new Array(6).fill(1)
+    return array.map((x) => (
+      <div className="col-sm-4" key={x}>
+        <Skeleton height={200} className="mb30" />
       </div>
     ))
   }
@@ -29,7 +40,10 @@ function ProductList(props) {
           image: replaceImgs(e.image)
         }))
         setProducts(newRes)
-      } catch (error) {}
+        setLoading(false)
+      } catch (error) {
+        setLoading(false)
+      }
     })()
     return () => {}
   }, [])
@@ -38,6 +52,7 @@ function ProductList(props) {
     <div className="features_items">
       <h2 className="title text-center">Features Items</h2>
       {renderListProduct()}
+      {loading === false ? renderListProduct() : renderListSkeleton()}
       <Pagination />
     </div>
   )

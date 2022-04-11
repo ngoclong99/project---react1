@@ -1,5 +1,6 @@
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
+import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import { BaseImageBlog } from '../../../util/setting/config'
 import { blogAPI } from './../../../api/blogAPI'
@@ -8,14 +9,8 @@ import Pagination from './../components/Pagination'
 BlogList.propTypes = {}
 
 function BlogList(props) {
-  const [blogList, setBlogList] = useState()
-
-  useEffect(() => {
-    ;(async () => {
-      const response = await blogAPI.getBlogList()
-      setBlogList(response.data.blog.data)
-    })()
-  }, [])
+  const [blogList, setBlogList] = useState([])
+  const [loading, setLoading] = useState(true)
 
   function renderBlogList() {
     return blogList?.map((item) => (
@@ -52,10 +47,34 @@ function BlogList(props) {
     ))
   }
 
+  const renderListSkeleton = () => {
+    let array = new Array(3).fill(1)
+    return array.map((x, i) => (
+      <div className="col-sm-12 mb30" key={i}>
+        <Skeleton height={10} width={'30%'} />
+        <Skeleton height={300} className="mb30" />
+        <Skeleton count="2" />
+        <Skeleton height={30} width={50} />
+      </div>
+    ))
+  }
+
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const response = await blogAPI.getBlogList()
+        setBlogList(response.data.blog.data)
+        setLoading(false)
+      } catch (error) {
+        setLoading(false)
+      }
+    })()
+  }, [])
+
   return (
     <div className="blog-post-area">
       <h2 className="title text-center">Latest From our Blog</h2>
-      {renderBlogList()}
+      {loading === false ? renderBlogList() : renderListSkeleton()}
       <Pagination />
     </div>
   )
