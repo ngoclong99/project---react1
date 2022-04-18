@@ -46,14 +46,19 @@ const listImg = [
 
 function Carousel(props) {
   const { timeOut } = props
-  const itemMaint = document.querySelector('.carousel-home')
-  const listItem = document.querySelectorAll('.item')
-  const widthItem = listItem[0]?.offsetWidth
-  const lengthImgs = listItem.length
+  const [itemMaint, setItemMaint] = useState(null)
+  const [listItem, setlistLtem] = useState(null)
+  const widthItem = listItem?.[0]?.offsetWidth
+  const lengthImgs = listItem?.length
   const position = useRef(0)
   const index = useRef(0)
   const click = useRef(false)
   const [dot, setDot] = useState(0)
+
+  useEffect(() => {
+    setItemMaint(document.querySelector('.carousel-home'))
+    setlistLtem(document.querySelectorAll('.item'))
+  }, [])
 
   function handleNextImg() {
     if (click.current === false) handleChangeSlide(1)

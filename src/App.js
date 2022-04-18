@@ -46,5 +46,4 @@ function App(props) {
     </Fragment>
   )
 }
-
 export default App
